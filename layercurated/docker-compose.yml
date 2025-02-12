@@ -1,0 +1,16 @@
+services:
+  curated-etl-app:
+    build: .
+    container_name: curated-etl-container
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: "python ./src/etl.py"
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - mrw_default
+
+networks:
+  mrw_default:
+    external: true

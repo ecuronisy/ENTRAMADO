@@ -1,0 +1,202 @@
+{
+    "pipelines": [
+        {
+            "name": "TiposPunto",
+            "tasks": [
+                {
+                    "task_key": "curated",
+                    "task": {
+                        "task_path": "/app/src/scripts/delta_transform/delta_main.py",
+                        "base_parameters": {
+                            "source_bucket": "TiposPunto",
+                            "target_bucket": "TiposPunto",
+                            "source_fields": {
+                                "idTipoPunto": {
+                                    "description": "Autoid",
+                                    "type_pandas": "int64"
+                                },
+                                "tipoPunto": {
+                                    "description": "Alfanumérico, hasta 50 caracteres -> Permitidos: Plataforma, Franquicia, Receptoría o Cliente",
+                                    "type_pandas": "string"
+                                },
+                                "observaciones": {
+                                    "description": "Alfanumérico, hasta 500 caracteres",
+                                    "type_pandas": "string"
+                                },
+                                "usuarioUltimaModificacion": {
+                                    "description": "Alfanumérico, hasta 10 caracteres",
+                                    "type_pandas": "string"
+                                },
+                                "fechaUltimaModificacion": {
+                                    "description": "Datetime, formato \"dd/mm/yyyy hh:mm:ss\"",
+                                    "type_pandas": "datetime64[ns]"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "TiposServicio",
+            "tasks": [
+                {
+                    "task_key": "curated",
+                    "task": {
+                        "task_path": "/app/src/scripts/delta_transform/delta_main.py",
+                        "base_parameters": {
+                            "source_bucket": "TiposServicio",
+                            "target_bucket": "TiposServicio",
+                            "source_fields": {
+                                "idTipoServicio": {
+                                    "description": "Autoid",
+                                    "type_pandas": "int64"
+                                },
+                                "tipoServicio": {
+                                    "description": "Alfanumérico, hasta 50 caracteres -> Permitidos: Todos, Premium o No Premium",
+                                    "type_pandas": "string"
+                                },
+                                "observaciones": {
+                                    "description": "Alfanumérico, hasta 500 caracteres",
+                                    "type_pandas": "string"
+                                },
+                                "usuarioUltimaModificacion": {
+                                    "description": "Alfanumérico, hasta 10 caracteres",
+                                    "type_pandas": "string"
+                                },
+                                "fechaUltimaModificacion": {
+                                    "description": "Datetime, formato \"dd/mm/yyyy hh:mm:ss\"",
+                                    "type_pandas": "datetime64[ns]"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "TiposVehiculo",
+            "tasks": [
+                {
+                    "task_key": "curated",
+                    "task": {
+                        "task_path": "/app/src/scripts/delta_transform/delta_main.py",
+                        "base_parameters": {
+                            "source_bucket": "TiposVehiculo",
+                            "target_bucket": "TiposVehiculo",
+                            "source_fields": {
+                                "idTipoVehiculo": {
+                                    "description": "Autoid",
+                                    "type_pandas": "int64"
+                                },
+                                "tipoVehiculo": {
+                                    "description": "Alfanumérico, hasta 50 caracteres",
+                                    "type_pandas": "string"
+                                },
+                                "observaciones": {
+                                    "description": "Alfanumérico, hasta 500 caracteres",
+                                    "type_pandas": "string"
+                                },
+                                "usuarioUltimaModificacion": {
+                                    "description": "Alfanumérico, hasta 10 caracteres",
+                                    "type_pandas": "string"
+                                },
+                                "fechaUltimaModificacion": {
+                                    "description": "Datetime, formato \"dd/mm/yyyy hh:mm:ss\"",
+                                    "type_pandas": "datetime64[ns]"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "TiposVia",
+            "tasks": [
+                {
+                    "task_key": "curated",
+                    "task": {
+                        "task_path": "/app/src/scripts/full_transform/full_main.py",
+                        "base_parameters": {
+                            "source_bucket": "TiposVia",
+                            "target_bucket": "TiposVia",
+                            "source_fields": {
+                                "idTipoVia": {
+                                    "description": "Autoid",
+                                    "type_pandas": "int64"
+                                },
+                                "codigoVia": {
+                                    "description": "Alfanumérico, 2 caracteres",
+                                    "type_pandas": "string"
+                                },
+                                "via": {
+                                    "description": "Alfanumérico, hasta 50 caracteres",
+                                    "type_pandas": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Provincias",
+            "tasks": [
+                {
+                    "task_key": "curated",
+                    "task": {
+                        "task_path": "/app/src/scripts/full_transform/full_main.py",
+                        "base_parameters": {
+                            "source_bucket": "Provincias",
+                            "target_bucket": "Provincias",
+                            "source_fields": {
+                                "idProvincia": {
+                                    "description": "Autoid",
+                                    "type_pandas": "int64"
+                                },
+                                "fkRegion": {
+                                    "description": "Numérico",
+                                    "type_pandas": "int64"
+                                },
+                                "codigoProvincia": {
+                                    "description": "Alfanumérico, hasta 2 caracteres",
+                                    "type_pandas": "string"
+                                },
+                                "provincia": {
+                                    "description": "Alfanumérico, hasta 50 caracteres",
+                                    "type_pandas": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Regiones",
+            "tasks": [
+                {
+                    "task_key": "curated",
+                    "task": {
+                        "task_path": "/app/src/scripts/full_transform/full_main.py",
+                        "base_parameters": {
+                            "source_bucket": "Regiones",
+                            "target_bucket": "Regiones",
+                            "source_fields": {
+                                "idRegion": {
+                                    "description": "Autoid",
+                                    "type_pandas": "int64"
+                                },
+                                "region": {
+                                    "description": "Alfanumérico, hasta 50 caracteres",
+                                    "type_pandas": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

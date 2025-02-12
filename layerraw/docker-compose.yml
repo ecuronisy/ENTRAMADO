@@ -1,0 +1,18 @@
+services:
+  raw-etl-app:
+    build: .
+    container_name: raw-etl-container
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: python ./src/etl.py
+    environment:
+      - PYTHONUNBUFFERED=1
+    env_file: 
+      - .env
+    networks:
+      - mrw_default
+
+networks:
+  mrw_default:
+    external: true

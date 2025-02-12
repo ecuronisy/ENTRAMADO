@@ -1,0 +1,120 @@
+{
+    "pipelines": [
+        {
+            "name": "TiposPunto",
+            "tasks": [
+                {
+                    "task_key": "raw",
+                    "task": {
+                        "task_path": "/app/src/steps/raw/TiposPunto/tipos_punto_raw.py",
+                        "base_parameters": {
+                            "sql_database": "RutasTroncalesMRW",
+                            "sql_schema": "dbo",
+                            "sql_table": "TiposPunto",
+                            "sql_string": "sqlstring",
+                            "target_bucket": "/buckets/raw/",
+                            "fields": {
+                                "idTipoPunto": {
+                                    "description": "Autoid",
+                                    "type_pandas": "int64"
+                                },
+                                "tipoPunto": {
+                                    "description": "Alfanumérico, hasta 50 caracteres -> Permitidos: Plataforma, Franquicia, Receptoría o Cliente",
+                                    "type_pandas": "string"
+                                },
+                                "observaciones": {
+                                    "description": "Alfanumérico, hasta 500 caracteres",
+                                    "type_pandas": "string"
+                                },
+                                "usuarioUltimaModificacion": {
+                                    "description": "Alfanumérico, hasta 10 caracteres",
+                                    "type_pandas": "string"
+                                },
+                                "fechaUltimaModificacion": {
+                                    "description": "Datetime, formato \"dd/mm/yyyy hh:mm:ss\"",
+                                    "type_pandas": "datetime64[ns]"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "task_key": "curated",
+                    "task": {
+                        "task_path": "/app/src/steps/curated/TiposPunto/tipos_punto_curated.py",
+                        "base_parameters": {
+                            "source_bucket": "/buckets/raw/TiposPunto",
+                            "target_bucket": "/buckets/curated/TiposPunto"
+                        }
+                    }
+                },
+                {
+                    "task_key": "app",
+                    "task": {
+                        "task_path": "/app/src/steps/app/TiposPunto/tipos_punto_app.py",
+                        "base_parameters": {
+                            "source_bucket": "/buckets/curated/TiposPunto",
+                            "target_bucket": "/buckets/app/TiposPunto"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Provincias",
+            "tasks": [
+                {
+                    "task_key": "raw",
+                    "task": {
+                        "task_path": "/app/src/steps/raw/Provincias/provincias_raw.py",
+                        "base_parameters": {
+                            "sql_database": "RutasTroncalesMRW",
+                            "sql_schema": "dbo",
+                            "sql_table": "Provincias",
+                            "sql_string": "sqlstring",
+                            "target_bucket": "/buckets/raw/",
+                            "fields": {
+                                "idProvincia": {
+                                    "description": "Autoid",
+                                    "type_pandas": "int64"
+                                },
+                                "fkRegion": {
+                                    "description": "Numérico",
+                                    "type_pandas": "int64"
+                                },
+                                "codigoProvincia": {
+                                    "description": "Alfanumérico, hasta 2 caracteres",
+                                    "type_pandas": "string"
+                                },
+                                "provincia": {
+                                    "description": "Alfanumérico, hasta 50 caracteres",
+                                    "type_pandas": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "task_key": "curated",
+                    "task": {
+                        "task_path": "/app/src/steps/curated/Provincias/provincias_curated.py",
+                        "base_parameters": {
+                            "source_bucket": "/buckets/raw/Provincias",
+                            "target_bucket": "/buckets/curated/Provincias"
+                        }
+                    }
+                },
+                {
+                    "task_key": "app",
+                    "task": {
+                        "task_path": "/app/src/steps/app/Provincias/provincias_app.py",
+                        "base_parameters": {
+                            "source_bucket": "/buckets/curated/Provincias",
+                            "target_bucket": "/buckets/app/Provincias"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

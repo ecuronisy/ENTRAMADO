@@ -1,0 +1,53 @@
+idProvincia,fkRegion,codigoProvincia,provincia
+1,1,01,Álava
+2,1,02,Albacete
+3,1,03,Alicante
+4,1,04,Almería
+5,1,05,Ávila
+6,1,06,Badajoz
+7,1,07,Baleares
+8,1,08,Barcelona
+9,1,09,Burgos
+10,1,10,Cáceres
+11,1,11,Cádiz
+12,1,12,Castellón
+13,1,13,Ciudad Real
+14,1,14,Córdoba
+15,1,15,La Coruña
+16,1,16,Cuenca
+17,1,17,Gerona
+18,1,18,Granada
+19,1,19,Guadalajara
+20,1,20,Guipúzcoa
+21,1,21,Huelva
+22,1,22,Huesca
+23,1,23,Jaén
+24,1,24,León
+25,1,25,Lérida
+26,1,26,La Rioja
+27,1,27,Lugo
+28,1,28,Madrid
+29,1,29,Málaga
+30,1,30,Murcia
+31,1,31,Navarra
+32,1,32,Orense
+33,1,33,Asturias
+34,1,34,Palencia
+35,1,35,Las Palmas
+36,1,36,Pontevedra
+37,1,37,Salamanca
+38,1,38,Santa Cruz de Tenerife
+39,1,39,Cantabria
+40,1,40,Segovia
+41,1,41,Sevilla
+42,1,42,Soria
+43,1,43,Tarragona
+44,1,44,Teruel
+45,1,45,Toledo
+46,1,46,Valencia
+47,1,47,Valladolid
+48,1,48,Vizcaya
+49,1,49,Zamora
+50,1,50,Zaragoza
+51,1,51,Ceuta
+52,1,52,Melilla

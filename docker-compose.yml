@@ -1,0 +1,23 @@
+services:
+  minio:
+    image: minio/minio:latest
+    container_name: miniomrw
+    ports:
+      - "9000:9000"
+      - "9090:9090"
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=admin123
+    command: server /data --console-address ":9090"
+    volumes:
+      - minio_data:/data
+    networks:
+      - mrw_default
+
+volumes:
+  minio_data:
+    driver: local
+
+networks:
+  mrw_default:
+    external: true
